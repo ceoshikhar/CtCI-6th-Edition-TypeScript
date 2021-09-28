@@ -1,15 +1,21 @@
-export function isRotatedSubstring(str1: string, str2: string): boolean {
-    if (!str1 || !str2) {
+/**
+ * Time: O(N)
+ * Space: O(N)
+ * where N is the length of of the `str` string from which we have to check if
+ * the `rotatedStr` string is a rotated substring of `str` string.
+ */
+export function isRotatedSubstring(str: string, rotatedStr: string): boolean {
+    if (!str || !rotatedStr) {
         throw new Error('invalid input');
     }
 
-    if (str1.length !== str2.length) {
+    if (str.length !== rotatedStr.length) {
         return false;
     }
 
-    return isSubstring(str2, str1 + str1);
+    return isSubstring(rotatedStr, str + str);
 }
 
-function isSubstring(word: string, another: string): boolean {
-    return another.includes(word);
+function isSubstring(subStr: string, str: string): boolean {
+    return str.includes(subStr);
 }
